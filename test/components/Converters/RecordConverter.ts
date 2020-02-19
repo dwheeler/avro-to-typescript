@@ -71,6 +71,15 @@ describe("RecordType Converter test", () => {
         expect(actual).to.deep.equal(expected);
     });
 
+    it("should convert avro schema with custom long types", () => {
+        const converter = new RecordConverter(undefined, { "long" : "string" });
+        converter.convert(`${avroFolder}/Long.avsc`);
+
+        const actual = converter.joinExports();
+        const expected = getExpectedResult(`${compiledFolder}/Long.ts.test`);
+        expect(actual).to.deep.equal(expected);
+    });
+
     it("should convert avro schema with mapped logical types", () => {
         const converter = new RecordConverter({ "timestamp-millis" : "string" });
         converter.convert(`${avroFolder}/RecordWithLogicalTypes.avsc`);

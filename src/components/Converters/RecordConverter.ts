@@ -42,13 +42,13 @@ export class RecordConverter extends BaseConverter {
 
     protected convertType(type: Type): string {
         if (typeof type === "string") {
-            const converter = new PrimitiveConverter();
+            const converter = new PrimitiveConverter(undefined, this.primitiveTypesMap);
 
             return converter.convert(type);
         }
 
         if (TypeHelper.isLogicalType(type)) {
-            const converter = new LogicalTypeConverter(this.logicalTypesMap);
+            const converter = new LogicalTypeConverter(this.logicalTypesMap, this.primitiveTypesMap);
 
             return converter.convert(type);
         }

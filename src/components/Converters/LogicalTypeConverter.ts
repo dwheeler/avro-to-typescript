@@ -5,7 +5,7 @@ import { PrimitiveConverter } from "./PrimitiveConverter";
 export class LogicalTypeConverter extends BaseConverter {
     public convert(data: any): string {
         data = this.getData(data) as LogicalType;
-        const primitiveConverter = new PrimitiveConverter();
+        const primitiveConverter = new PrimitiveConverter(undefined, this.primitiveTypesMap);
 
         return this.logicalTypesMap[data.logicalType] || primitiveConverter.convert(data.type);
     }

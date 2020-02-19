@@ -1,0 +1,14 @@
+{
+    "namespace": "com.example.avro",
+    "type": "record",
+    "name": "LongEvent",
+    "doc": "",
+    "fields": [
+        { "name": "hash", "type": "string", "doc": "Hash of this event" },
+        { "name": "height", "type": "long", "doc": "Height of this event" },
+        { "name": "values", "type": {
+            "type": "array",
+            "items": "long"
+        }}
+    ]
+}

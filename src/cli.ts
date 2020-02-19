@@ -28,6 +28,13 @@ const cmdOptions = [
         description: "Use logical types",
         multiple: true,
     },
+    {
+        name: "primitive-types",
+        type: String,
+        typeLabel: "{underline primitive-type} {underline primitive-type}",
+        description: "Use primitive types",
+        multiple: true,
+    },
 ];
 
 const usageOptions = [
@@ -87,7 +94,18 @@ if (options.compile) {
         }
     }
 
-    const compiler: Compiler = new Compiler(classDir, logicalTypes);
+    const primitiveTypes = {};
+    const primitiveTypesMap = options["primitive-types"];
+    if (primitiveTypesMap && primitiveTypesMap.length) {
+        for (let index = 0; index < primitiveTypesMap.length; index += 2) {
+            if (!primitiveTypesMap[index + 1]) {
+                ConsoleHelper.break("Invalid logical-types, you must alternate logical type with typescript type");
+            }
+            primitiveTypes[primitiveTypesMap[index]] = primitiveTypesMap[index + 1];
+        }
+    }
+
+    const compiler: Compiler = new Compiler(classDir, logicalTypes, primitiveTypes);
     compiler.compileFolder(schemaDir);
 }
 

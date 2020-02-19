@@ -3,6 +3,9 @@ import { BaseConverter } from "./base/BaseConverter";
 export class PrimitiveConverter extends BaseConverter {
 
     public convert(type: string): string {
+        if (this.primitiveTypesMap[type]) {
+            return this.primitiveTypesMap[type];
+        }
         switch (type) {
             case "long":
             case "int":
