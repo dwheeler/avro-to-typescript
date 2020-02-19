@@ -21,7 +21,7 @@ Usage
 #### Global:
 Most projects will use avro-to-typescript this way
 ```sh
-npm install -g @chasdevs/avro-to-typescript
+npm install -g dwheeler/avro-to-typescript
 
 avro-to-typescript --compile [ schema-directory ] [ output-directory ]
 ```
@@ -30,13 +30,13 @@ output directory so have that in mind.
 
 You also need to install avro-to-typescript in your project.
 ```
-npm install @chasdevs/avro-to-typescript --save
+npm install dwheeler/avro-to-typescript --save
 ```
 
 #### Project:
 This way is if your projects needs to generate avro classes while running.
 ```
-npm install @chasdevs/avro-to-typescript --save
+npm install dwheeler/avro-to-typescript --save
 ```
 
     import { Compiler } from "chasdevs/avro-to-typescript";
