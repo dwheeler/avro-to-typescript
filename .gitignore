@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
-dist/
+dist/test
 node_modules/
 .gradle
 compiled
